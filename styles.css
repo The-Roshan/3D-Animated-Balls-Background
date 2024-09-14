@@ -1,0 +1,93 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
+    animation: backgroundGradient 20s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+/* Background gradient animation */
+@keyframes backgroundGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Background container for spheres */
+.background-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Sphere styles */
+.sphere {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    animation: floatAnimation linear infinite, rotateAnimation linear infinite;
+}
+
+/* Content styles */
+.content {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive text sizes */
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Keyframes for floating animation */
+@keyframes floatAnimation {
+    0% {
+        transform: translate3d(var(--x-start), var(--y-start), var(--z-start));
+    }
+    100% {
+        transform: translate3d(var(--x-end), var(--y-end), var(--z-end));
+    }
+}
+
+/* Keyframes for rotation animation */
+@keyframes rotateAnimation {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
